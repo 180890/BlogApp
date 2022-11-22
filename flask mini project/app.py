@@ -3,7 +3,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
-import re
+import re,datetime
 
 
 app = Flask(__name__)
@@ -21,6 +21,22 @@ mysql = MySQL(app)
 @app.route('/')
 def home():
 	return render_template('mainpage.html')
+
+@app.route('/display',methods=['post','get'])
+def display():
+	return render_template('display.html')
+
+@app.route('/postblog',methods=['post','get'])
+def postblog():
+	title = request.form['blktitle']
+	content = request.form['blkcontent']
+	time = datetime.datetime.now()
+	cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+	cur.execute("insert into blogDetails (blog_title,blog_content,creation_time,id) values (%s,%s,%s,%s)",(title,content,time,session['id']))
+	return "success"
+
+
+
 @app.route('/login', methods =['GET', 'POST'])
 def login():
 	msg = ''
@@ -28,14 +44,14 @@ def login():
 		username = request.form['username']
 		password = request.form['password']
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-		cursor.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password, ))
+		cursor.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password))
 		account = cursor.fetchone()
 		if account:
 			session['loggedin'] = True
 			session['id'] = account['id']
 			session['username'] = account['username']
-			msg = 'Logged in successfully !'
-			return render_template('index.html', msg = msg)
+			msg = 'Login success'
+			return render_template('display.html', msg = msg)
 		else:
 			msg = 'Incorrect username / password !'
 	return render_template('login.html', msg = msg)
