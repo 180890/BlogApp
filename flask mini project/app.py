@@ -28,32 +28,52 @@ def display():
 
 @app.route('/postblog',methods=['post','get'])
 def postblog():
-	title = request.form['blktitle']
-	content = request.form['blkcontent']
+	title = request.values.get('blktitle')
+	content = request.values.get('blkcontent')
 	time = datetime.datetime.now()
 	cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-	cur.execute("insert into blogDetails (blog_title,blog_content,creation_time,id) values (%s,%s,%s,%s)",(title,content,time,session['id']))
+	cur.execute("insert into blogDetails (blog_title,blog_content,creation_time,id) values ('blog_id',%s,%s,%s)",(title,content,time))
 	return "success"
 
-
-
+@app.route('/auth',methods=['post','get'])
+def auth():
+	username = request.values.get('username')
+	password = request.values.get('password')
+	cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+	cursor.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password))
+	account = cursor.fetchone()
+	if account:
+		session['loggedin'] = True
+		session['id'] = account['id']
+		session['username'] = account['username']
+		msg = 'Login success'
+		return render_template('display.html', msg = msg,id = session['id'],uname= username)
+	else:
+		msg = 'Incorrect username / password !'
+		return render_template('login.html', msg = msg)
+	# return render_template('login.html',msg = "Invalid Credentias")
+	
+@app.route('/temp',methods=['post','get'])
+def temp():
+	t = request.form['blktitle']
+	return render_template('temp.html',msg = t)
 @app.route('/login', methods =['GET', 'POST'])
 def login():
 	msg = ''
-	if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
-		username = request.form['username']
-		password = request.form['password']
-		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-		cursor.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password))
-		account = cursor.fetchone()
-		if account:
-			session['loggedin'] = True
-			session['id'] = account['id']
-			session['username'] = account['username']
-			msg = 'Login success'
-			return render_template('display.html', msg = msg)
-		else:
-			msg = 'Incorrect username / password !'
+	# if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+	# 	username = request.form['username']
+	# 	password = request.form['password']
+	# 	cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+	# 	cursor.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password))
+	# 	account = cursor.fetchone()
+	# 	if account:
+	# 		session['loggedin'] = True
+	# 		session['id'] = account['id']
+	# 		session['username'] = account['username']
+	# 		msg = 'Login success'
+	# 		return render_template('display.html', msg = msg,id = session['id'],uname= username)
+	# 	else:
+	# 		msg = 'Incorrect username / password !'
 	return render_template('login.html', msg = msg)
 
 @app.route('/logout')
