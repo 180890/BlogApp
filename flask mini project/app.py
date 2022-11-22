@@ -11,10 +11,10 @@ app = Flask(__name__)
 
 app.secret_key = 'your secret key'
 
-app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_HOST'] = 'loaclhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Raghu@2000'
-app.config['MYSQL_DB'] = 'geek_login'
+app.config['MYSQL_PASSWORD'] = 'sHIVU@2000'
+app.config['MYSQL_DB'] = 'blogapp'
 
 mysql = MySQL(app)
 
