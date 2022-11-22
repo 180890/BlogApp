@@ -14,6 +14,8 @@
     border: 1px solid #236B8E;
     border-radius: 0px;
     background-color: #9AC0CD;
+    background-image :url(https://wallpaperaccess.com/full/449895.jpg);
+    border-style: hidden;
 }
 
 .btn {
@@ -28,6 +30,14 @@
 .textbox{
     padding: 10px 40px;
     background-color: #236B8E;
+    color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.txt{
+    padding: 10px 40px;
+    background-image :url(https://wallpaperaccess.com/full/449895.jpg);
+    background-color: purple;
     color: #FFFFFF;
     border-radius: 10px;
 }
