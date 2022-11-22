@@ -1,10 +1,9 @@
-<!-- Store this code in 'register.html' file inside the 'templates' folder -->
 
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title> Register </title>
-		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">			
+		<link rel="stylesheet" href="static/style.css">			
 	</head>
 	<style>
 		body{
@@ -23,7 +22,7 @@
 				<div class="msg">{{ msg }}</div>
 					<input id="username" name="username" type="text" placeholder="Enter Your Username" class="textbox"/></br></br>
 					<input id="password" name="password" type="password" placeholder="Enter Your Password" class="textbox"/></br></br>
-					<input id="email" name="email" type="text" placeholder="Enter Your Email ID" class="textbox"/></br></br>
+					<input id="email" name="email" type="email" placeholder="Enter Your Email ID" class="textbox"/></br></br>
 					<input type="submit" class="btn" value="Sign Up"></br>
 				</form>
 			</h2>

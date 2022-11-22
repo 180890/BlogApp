@@ -1,33 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body>
-    <h3>Signup to our Website</h3>
-    <hr/>
-    <form>
-    <table>
-        <tr> 
-            <td> First Name :  <input type="text" name="firstname" placeholder="Enter your first name"/> </td>
-        </tr>
-        <tr> 
-            <td> Last Name :  <input type="text" name="lastname" placeholder="Enter your last name"/> </td>
-        </tr>
-        <tr> 
-            <td> Date of Birth :  <input type="date" name="dob"/> </td>
-        </tr>
-        <tr> 
-        <td> Email :  <input type="email" name="email" placeholder="Enter your email id"/> </td>
-        </tr>
 
-        <tr>
-        <td> Password :  <input type="password" name="passwd" placeholder="Enter your password"/> </td>
-        </tr>
-        <tr>
-        <td colspan="2"> <input type='submit' name="submitbtn"/> </td>
-        </tr>
-    </table>
-
-</form>
-</body>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> Register </title>
+		<link rel="stylesheet" href="style.css">			
+	</head>
+	<body></br></br></br></br></br>
+		<div align="center">
+		<div align="center" class="border">
+			<div class="header">
+				<h1 class="word">Register</h1>
+			</div></br></br></br>
+			<h2 class="word">
+				<form action="{{ url_for('register') }}" method="post">
+				<div class="msg">{{ msg }}</div>
+					<input id="username" name="username" type="text" placeholder="Enter Your Username" class="textbox"/></br></br>
+					<input id="password" name="password" type="password" placeholder="Enter Your Password" class="textbox"/></br></br>
+					<input id="email" name="email" type="email" placeholder="Enter Your Email ID" class="textbox"/></br></br>
+					<input type="submit" class="btn" value="Sign Up"></br>
+				</form>
+			</h2>
+			<p class="bottom">Already have an account? <a class="bottom" href="{{url_for('login')}}"> Sign In here</a></p>
+		</div>
+		</div>
+	</body>
 </html>
