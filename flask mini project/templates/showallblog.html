@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<body>
+    <table class="table table-hover">
+      <thead>
+          <tr>
+              
+              <th scope="col">username</th>
+              <th scope="col">Title</th>
+              <th scope="col">Content</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for row in allblogs %}
+          <tr>
+          <td>{{row.2}}</td>
+          <td>{{row.0}}</td>
+          <td>{{row.1}}</td>
+      </tr>
+      {%endfor%}
+      </tbody>
+      </table> 
+</body>
+{%endblock%}

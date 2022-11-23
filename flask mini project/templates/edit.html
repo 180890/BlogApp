@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+ 
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card card-body">
+        <form action="{{url_for('update',id=id)}}" method="POST">
+          <div class="form-group">
+            Blog Title
+            <input type="text" name="title" class="form-control" value='{{blog.0}}'>
+            
+          </div>
+          <div class="form-group">
+            Blog Content
+            <input type="text" name="content"  class="form-control" value='{{blog.1}}'>
+            
+          </div>
+          <br>
+          <button type="submit">
+            Add
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+{%endblock%}

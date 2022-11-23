@@ -1,6 +1,6 @@
 
 CREATE DATABASE IF NOT EXISTS geek_login DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE geek_login;
+USE blog;
 
 CREATE table if not exists accounts (
 	id int(11) not null auto_increment,
@@ -13,7 +13,7 @@ CREATE table if not exists accounts (
 CREATE table if not exists blogDetails (
 	blog_id int(11) not null auto_increment,
     blog_title varchar(255),
-    blog_content varchar(255),
+    blog_content nvarchar(1000),
     creation_time varchar(255),
     id int(11),
     foreign key(id) references accounts(id),

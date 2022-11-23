@@ -1,4 +1,5 @@
-<!-- Store this code in 'login.html' file inside the 'templates' folder -->
+
+
 
 
 <html>
@@ -6,7 +7,7 @@
 	div{align-self: center;}
         body{
     background-color: #7c7b8f;
-    background-image: url(https://wallpaperaccess.com/full/449895.jpg) ;
+    background-image: url(https://as2.ftcdn.net/v2/jpg/02/61/47/45/1000_F_261474568_ApLtgUZyTh4xqBOzvgmwXxijSE7VbVLb.jpg) ;
      background-size: cover;}
 </style>
 <head>
@@ -16,19 +17,20 @@
 	</head>
 	<body></br></br></br></br></br>
 		<div align="center">
-		<div align="center" class="border">
-			<div class="header">
-				<h1 class="word">Login</h1>
-			</div></br></br></br>
+		<div align="center">
+
+				<!-- <h1 class="textbox" >User Login</h1> -->
+				<h3 style = "font-family: 'Trebuchet MS';"> User Login </h3>
+			</br></br></br>
 			<h2 class="word">
-				<form action="{{ url_for('display') }}" method="post,get">
+				<form action="{{ url_for('login') }}" method="post">
 				<div class="msg">{{ msg }}</div>
 					<input id="username" name="username" type="text" placeholder="Enter Your Username" class="textbox"/></br></br>
 					<input id="password" name="password" type="password" placeholder="Enter Your Password" class="textbox"/></br></br></br>
 					<input type="submit" class="btn" value="Sign In"></br></br>
 				</form>
 			</h2>
-			<p class="bottom">Don't have an account? <a class="bottom" href="{{url_for('register')}}"> Sign Up here</a></p>
+			<p style="font-weight: bold;color :rgb(255, 255, 255)">Don't have an account? <a class="bottom" href="{{url_for('register')}}"> Sign Up here</a></p>
 		</div>
 		</div>
 	</body>

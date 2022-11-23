@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<body>
+    <table class="table table-hover">
+      <thead>
+          <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Content</th>
+              <th scope="col">Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for row in allblogs %}
+          <tr>
+          <td>{{row.0}}</td>
+          <td>{{row.1}}</td>
+        
+          <td>
+            <a href="/edit/{{row.3}}" ><i class="fa-solid fa-pen"></i></a>|
+              <a href="/delete/{{ row.3 }}" onclick="return confirm('Are Sure Want To Deleted ?')" ><i class="fa-solid fa-trash" style="color:red;"></i></a>
+  
+          </td>
+      </tr>
+      {%endfor%}
+      </tbody>
+      </table> 
+</body>
+{%endblock%}

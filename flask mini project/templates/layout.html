@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/32915b57c4.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/mainpagestyle.css">
+    <title>Tres</title>
+    
+</head>
+<style>
+    body{
+    background-color: gray;
+    background-image: url(../static/cover.jpg);
+background-size: cover;
+}
+body::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(151, 197, 220, 0.8);
+    z-index: -1;
+}
+</style>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="../static/Tres.png" alt="tres" width="80"  height="30">
+        </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add">Add Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/showall">Your Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/showallblog">All Blog</a>
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Sign out</a>
+                </li>
+                </ul>
+            </div>
+            </div>
+</nav><!-- navbar end -->
+
+    {%block content%}
+    {%endblock%}
+
+</body>
+</html>
